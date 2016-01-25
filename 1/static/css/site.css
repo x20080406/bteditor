@@ -1,0 +1,12 @@
+.content-padding {padding: 40px 15px;}
+#footer {
+    color: #888;
+    line-height: 1.6;
+    padding: 40px 0 0;
+    vertical-align: top;
+}
+.navbar-inverse {
+    background-color: #f8f8f8;
+    background-image: linear-gradient(to bottom, #222, #111);
+    border-color: #e7e7e7;
+}

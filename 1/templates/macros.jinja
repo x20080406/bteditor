@@ -1,0 +1,91 @@
+{% macro front_pagination(paginate,prefix,suffix) %}
+{#
+	生成前端分页URL
+	完整路径有prefix+也号+suffix
+	prefix以'/'结尾，suffix以'/'开头
+#}
+{%if paginate.page > 0 %}
+<div>
+	  {% if paginate.has_prev %}
+	     <a class="prev" href="{{prefix}}{{ (paginate.page - 1) }}{{suffix}}"> &larr; Newer </a>
+	  {% endif %}
+	  {%- for page in paginate.iter_pages() %}
+	    {% if page %}
+	      {% if page != paginate.page %}
+	        <a href="{{prefix}}{{page}}{{suffix}}">&nbsp;&nbsp;{{ page }}&nbsp;&nbsp;</a>
+	      {% else %}
+	        &nbsp;&nbsp;{{page}}&nbsp;&nbsp;
+	      {% endif %}
+	    {% else %}
+	      &nbsp;&nbsp; … &nbsp;&nbsp;
+	    {% endif %}
+	  {%- endfor %}
+	  {% if paginate.has_next %}
+	    <a class="next" href="{{prefix}}{{ (paginate.page + 1) }}{{suffix}}">Older &rarr;</a>
+	  {% endif %}
+</div>
+{%endif%}
+{% endmacro %}
+					  
+					  
+{% macro render_pagination(pagination,prefix) %}
+  <div class="pagination pagination-centered">
+  {%if pagination.page > 0 %}
+  <ul>
+  {% if pagination.has_prev %}
+     <li><a href="{{prefix}}/{{ (pagination.page - 1) }}">&laquo;上一页 </a></li>
+  {% endif %}
+  {%- for page in pagination.iter_pages() %}
+    {% if page %}
+      {% if page != pagination.page %}
+        <li><a href="{{prefix}}/{{page}}">{{ page }}</a></li>
+      {% else %}
+        <li class="active"><a href="#">{{page}}</a></li>
+      {% endif %}
+    {% else %}
+      <li class="disabled"><a href="#">…</a></li>
+    {% endif %}
+  {%- endfor %}
+  {% if pagination.has_next %}
+     <li><a href="{{prefix}}/{{ (pagination.page + 1) }}">下一页 &raquo;</a></li>
+  {% endif %}
+  </ul>
+  {%endif%}
+  </div>
+{% endmacro %}
+
+{#
+前台资源
+#}
+{% macro resource_def() %}
+<link href="http://lib.sinaapp.com/js/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.10.2/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://lib.sinaapp.com/js/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+{#
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+#}
+
+{% endmacro %}
+
+{#后台资源#}
+{% macro backend_resource_def() %}
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+	{#http://sae.sina.com.cn/doc/python/tools.html#id9 #}	
+	<link href="http://lib.sinaapp.com/js/bootstrap/2.3.2/css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<script src="//lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
+	<script src="//lib.sinaapp.com/js/bootstrap/2.3.2/js/bootstrap.js"></script>
+	<script src="{{ url_for('static', filename='js/site.min.js') }}"></script>
+	{#
+		<link href="http://libs.baidu.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+		<script src="http://libs.baidu.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	#}
+	<style>
+	.content-padding {padding: 40px 15px;}
+	</style>
+{% endmacro %}

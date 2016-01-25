@@ -1,0 +1,67 @@
+{% from 'macros.jinja' import resource_def with context %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   	<meta name="author" content="种子在线编辑器">
+	<meta name="description" content="种子在线编辑器，可以方便用户在线对种子的信息与内容编辑。">
+	<meta name="keywords" content="种子在线编辑器 种子编辑器  BT文件修改  BT种子修改编辑 bt种子转换 bteditor ">
+    <title>BT种子在线编辑</title>
+    {% autoescape false%}
+    	{{resource_def()}}
+    {% endautoescape %}
+  </head>
+  <body>
+  	<div class="navbar navbar-fixed-top ">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">BT种子在线编辑</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="/">首页</a>
+              </li>
+              <li class="">
+                <a href="/help">帮助</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container content-padding" style="padding-top: 42px" >
+		{% block content %}
+		{% endblock %}
+    </div>
+    <footer id="footer">
+		<div class="container">
+		    <div class="row inner hidden-xs">
+		    	<legend></legend>
+		        <dl class="span7 site-link">
+		            <dt>友情链接</dt>
+		            <dd><a href="http://appfuse.sinaapp.com/" target="_blank">appfuse</a></dd>
+		            <dd><a href="http://wpblog.sinaapp.com" target="_blank">ax003d</a></dd>
+		        </dl>
+		        <dl class="site-link" id="license">
+		            <dt>声明</dt>
+		            <dd>本网站仅用于torrent技术交流研究，用户使用本工具进行的任何修改操作，
+					本服务器均不保存，也不提供传播等功能, 对此工具的非法使用概不负责。</dd>
+		        </dl>
+		    </div>
+		</div>
+		</footer>
+  </body>
+</html>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F106a912ac79facc371d2cb980021b928' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
